@@ -1,3 +1,5 @@
+package server;
+
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -46,7 +48,7 @@ public class ClientHandler {
         private void performAuthentication() throws IOException{
         while (true){
           String inboundMessage = in.readUTF();
-            if (inboundMessage.startsWith("- auth")) {
+            if (inboundMessage.startsWith("-auth")) {
                 String[] credentials = inboundMessage.split("\\s");
 
                 AtomicBoolean isSuccess = new AtomicBoolean(false);
@@ -59,6 +61,7 @@ public class ClientHandler {
                                         name = username;
                                         server.addClient(this);
                                         isSuccess.set(true);
+                                        sendMessage("You have logged in!");
                                     } else {
                                         sendMessage("Current username is already occupied.");
                                     }
@@ -68,11 +71,9 @@ public class ClientHandler {
                         );
 
                 if (isSuccess.get()) break;
-                    
 
-
-
-
+            } else {
+                sendMessage("Ypu need be logged-in.");
 
             }
         }

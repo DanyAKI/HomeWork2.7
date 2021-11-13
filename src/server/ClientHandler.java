@@ -92,12 +92,26 @@ public class ClientHandler {
 
     public void readMessage(){
 
+        String strFromClient = null;
         try {
-            server.broadcastMessage(in.readUTF());
-            in.readUTF();
+            strFromClient = in.readUTF();
         } catch (IOException e) {
             e.printStackTrace();
         }
+        System.out.println("от " + name + ": " + strFromClient);
+        if (strFromClient.equals("/end")) {
+            return;
+        }  server.broadcastMessage(name + ": " + strFromClient);
+
+
+
+
+            //   try {
+       //     server.broadcastMessage( name + ":" + in.readUTF());
+         //   in.readUTF();
+        //} catch (IOException e) {
+          //  e.printStackTrace();
+        //}
 
 
     }

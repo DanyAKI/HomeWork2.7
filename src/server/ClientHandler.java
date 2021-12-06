@@ -104,14 +104,7 @@ public class ClientHandler {
         }  server.broadcastMessage(name + ": " + strFromClient);
 
 
-
-
-            //   try {
-       //     server.broadcastMessage( name + ":" + in.readUTF());
-         //   in.readUTF();
-        //} catch (IOException e) {
-          //  e.printStackTrace();
-        //}
+        
 
 
     }
